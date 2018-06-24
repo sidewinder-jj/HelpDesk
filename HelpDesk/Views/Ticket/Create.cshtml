@@ -1,0 +1,25 @@
+﻿@model HelpDesk.ViewModel.TicketFormViewModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create a Ticket</h2>
+@using (Html.BeginForm("Create", "Ticket"))
+{
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Summary)
+        @Html.TextBoxFor(m => m.Summary, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Description)
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+
+    </div>
+    <button type="submit" value="Save" class="btn btn-primary">Save</button>
+}
