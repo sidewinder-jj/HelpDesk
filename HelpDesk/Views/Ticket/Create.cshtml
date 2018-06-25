@@ -12,6 +12,7 @@
 
         @Html.LabelFor(m => m.Summary)
         @Html.TextBoxFor(m => m.Summary, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Summary)
 
     </div>
 
@@ -19,7 +20,12 @@
 
         @Html.LabelFor(m => m.Description)
         @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Description)
 
     </div>
     <button type="submit" value="Save" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
