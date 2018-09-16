@@ -5,8 +5,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Summary</h2>
+@Html.HiddenFor(m => m.Id, new { @id = "id" })
+<div class="container">
+    <div class="row">
+        <h2 style="display:inline;">
+            <span>@Model.Id -</span>
+            <span name="Summary" id="summary">@Model.Summary</span>
+        </h2>
+        <i class="far fa-edit form-inline" onclick="toggleEditSummary()"></i>
+        <div>
+            <p name="Description" id="description" style="display:inline;">@Model.Description</p>
+            <i class="far fa-edit form-inline" onclick="toggleEditDescription()"></i>
+        </div>
+    </div>
+</div>
+<button id="save" type="submit" value="Save" class="btn btn-success">Save</button>
 
-<p>@Model.Id</p>
-<i class="far fa-edit form-inline"></i>
-<p>@Model.Description</p>
+
+@section scripts
+{
+    <script type="text/javascript">
+        function toggleEditSummary() {
+            var summary = document.getElementById("summary");
+
+            summary.contentEditable = true;
+        }
+
+        function toggleEditDescription() {
+            var description = document.getElementById("description");
+
+            description.contentEditable = true;
+        }
+
+        $("#save").click(function () {
+            var modifiedTicket = {};
+            modifiedTicket.Summary = $("#summary").text();
+            modifiedTicket.Description = $("#description").text();
+            modifiedTicket.id = $("#id").val();
+
+            $.post("/ticket/edit", modifiedTicket, function (msg) {
+                $("#save").prop("disabled", true);
+                $("#msg").html("<strong>" + msg + "</strong>");
+            });
+        });
+    </script>
+}

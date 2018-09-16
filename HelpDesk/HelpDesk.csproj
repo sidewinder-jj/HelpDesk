@@ -219,7 +219,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\TicketRowViewModel.cs" />
-    <Compile Include="ViewModel\TicketFormViewModel.cs" />
+    <Compile Include="ViewModel\CreateTicketViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

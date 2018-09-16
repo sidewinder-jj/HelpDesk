@@ -24,7 +24,7 @@ namespace HelpDesk.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(TicketFormViewModel ticketFormViewModel)
+        public ActionResult Create(CreateTicketViewModel ticketFormViewModel)
         {
             var ticket = new Ticket
             {
@@ -50,6 +50,19 @@ namespace HelpDesk.Controllers
             };
 
             return View(ticket);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Ticket ticket)
+        {
+            var existingTicket = _context.Tickets.Find(ticket.Id);
+
+            existingTicket.Summary = ticket.Summary;
+            existingTicket.Description = ticket.Description;
+
+            _context.SaveChanges();
+
+            return View("View", ticket.Id);
         }
     }
 }
