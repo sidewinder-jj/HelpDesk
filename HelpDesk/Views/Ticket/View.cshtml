@@ -1,0 +1,12 @@
+﻿@model HelpDesk.Models.Ticket
+
+@{
+    ViewBag.Title = "View Ticket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Summary</h2>
+
+<p>@Model.Id</p>
+<i class="far fa-edit form-inline"></i>
+<p>@Model.Description</p>
