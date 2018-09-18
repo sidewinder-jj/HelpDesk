@@ -15,6 +15,7 @@ namespace HelpDesk.Controllers
             _context = new ApplicationDbContext();
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Index()
         {

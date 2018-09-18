@@ -9,5 +9,7 @@ namespace HelpDesk.ViewModel
 
         [Required]
         public string Description { get; set; }
+
+        public string CreatedByUserId { get; set; }
     }
 }

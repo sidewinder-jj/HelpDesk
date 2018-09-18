@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201806242020505_InitialMigration.Designer.cs">
       <DependentUpon>201806242020505_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809182032442_AddCreatedByUserId.cs" />
+    <Compile Include="Migrations\201809182032442_AddCreatedByUserId.Designer.cs">
+      <DependentUpon>201809182032442_AddCreatedByUserId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Ticket.cs" />
@@ -301,6 +305,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806242020505_InitialMigration.resx">
       <DependentUpon>201806242020505_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809182032442_AddCreatedByUserId.resx">
+      <DependentUpon>201809182032442_AddCreatedByUserId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

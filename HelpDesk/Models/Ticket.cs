@@ -18,5 +18,8 @@ namespace HelpDesk.Models
         [Required]
         [StringLength(1000)]
         public string Description { get; set; }
+
+        [StringLength(128)]
+        public string CreatedByUserId { get; set; }
     }
 }

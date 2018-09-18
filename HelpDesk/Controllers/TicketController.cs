@@ -1,9 +1,7 @@
 ﻿using HelpDesk.Models;
 using HelpDesk.ViewModel;
-using System;
-using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace HelpDesk.Controllers
@@ -18,18 +16,21 @@ namespace HelpDesk.Controllers
 
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Create(CreateTicketViewModel ticketFormViewModel)
         {
             var ticket = new Ticket
             {
                 Summary = ticketFormViewModel.Summary,
-                Description = ticketFormViewModel.Description
+                Description = ticketFormViewModel.Description,
+                CreatedByUserId = User.Identity.GetUserId()
             };
 
             _context.Tickets.Add(ticket);
@@ -38,6 +39,7 @@ namespace HelpDesk.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult View(int ticketId)
         {
@@ -52,6 +54,7 @@ namespace HelpDesk.Controllers
             return View(ticket);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(Ticket ticket)
         {
